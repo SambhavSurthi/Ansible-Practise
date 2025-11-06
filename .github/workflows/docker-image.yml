@@ -22,7 +22,7 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
+          username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_SECRET }}
 
       # Step 4 — Build & Push Backend Image
@@ -32,7 +32,7 @@ jobs:
           context: ./Backend/expense-splitter
           file: ./Backend/expense-splitter/backend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ansible-practise-backend:latest
+          tags: ${{ secrets.DOCKER_USER }}/ansible-practise-backend:latest
 
       # Step 5 — Build & Push Frontend Image
       - name: Build and Push Frontend Image
@@ -41,4 +41,4 @@ jobs:
           context: ./Frontend/expense-splitter
           file: ./Frontend/expense-splitter/frontend.Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ansible-practise-frontend:latest
+          tags: ${{ secrets.DOCKER_USER }}/ansible-practise-frontend:latest
